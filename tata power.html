@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Tata Power Command Center – Concept</title>
+<style>
+:root{--bg:#070d1a;--bg2:#12306b;--card:rgba(255,255,255,.06);--bd:rgba(255,255,255,.11);--tx:#eaf1ff;--mut:#8fa3c4;--acc:#38a3ff;--gold:#f5b942;--ok:#2fd186;--warn:#f5b942;--bad:#ff5d6c;color-scheme:dark;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+@media (prefers-color-scheme:light){:root:not([data-theme="dark"]){--bg:#eef3fb;--bg2:#cfe0fb;--card:rgba(255,255,255,.88);--bd:rgba(14,40,90,.12);--tx:#0c1b33;--mut:#5a6d8c;--acc:#0b63d1;--gold:#b97a00;--ok:#0f9a5a;--warn:#c98400;--bad:#d93a4a;color-scheme:light}}
+:root[data-theme="light"]{--bg:#eef3fb;--bg2:#cfe0fb;--card:rgba(255,255,255,.88);--bd:rgba(14,40,90,.12);--tx:#0c1b33;--mut:#5a6d8c;--acc:#0b63d1;--gold:#b97a00;--ok:#0f9a5a;--warn:#c98400;--bad:#d93a4a;color-scheme:light}
+html{scroll-padding-top:env(safe-area-inset-top,0px)}*{box-sizing:border-box}
+body{margin:0;color:var(--tx);font:14px/1.45 system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;background:radial-gradient(900px 420px at 85% -5%,var(--bg2),transparent),var(--bg);background-color:var(--bg)}
+.w{max-width:980px;margin:0 auto;padding:14px}
+.hero{display:flex;justify-content:space-between;align-items:center;gap:10px;flex-wrap:wrap;margin-bottom:6px}
+.brand{display:flex;gap:10px;align-items:center}
+.logo{width:42px;height:42px;border-radius:12px;background:linear-gradient(135deg,var(--acc),var(--gold));display:grid;place-items:center;font-size:22px;box-shadow:0 6px 20px rgba(56,163,255,.35)}
+h1{font-size:19px;margin:0;letter-spacing:-.01em}.sub{font-size:12px;color:var(--mut)}
+.pill{display:flex;align-items:center;gap:7px;font-size:12px;padding:6px 12px;border-radius:20px;border:1px solid var(--bd);background:var(--card);color:var(--ok)}
+.dot{width:8px;height:8px;border-radius:50%;background:var(--ok);box-shadow:0 0 0 0 var(--ok);animation:pu 1.6s infinite}
+@keyframes pu{70%{box-shadow:0 0 0 8px transparent}100%{box-shadow:0 0 0 0 transparent}}
+.note{font-size:11px;color:var(--mut);margin:4px 0 12px}
+nav{display:flex;gap:6px;overflow-x:auto;padding-bottom:8px;margin-bottom:6px}
+nav button{white-space:nowrap;border:1px solid var(--bd);background:var(--card);color:var(--mut);padding:9px 14px;border-radius:22px;font-size:13px;font-weight:600}
+nav button.on{color:#fff;background:linear-gradient(135deg,var(--acc),#6a5cff);border-color:transparent;box-shadow:0 6px 18px rgba(80,110,255,.4)}
+.g{display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));gap:10px;margin-bottom:12px}
+.two{display:grid;grid-template-columns:repeat(auto-fit,minmax(290px,1fr));gap:12px}
+.c{background:var(--card);border:1px solid var(--bd);border-radius:16px;padding:14px;backdrop-filter:blur(10px);margin-bottom:12px;animation:in .45s both}
+.g .c{margin:0;padding:12px}.two .c{margin:0}
+@keyframes in{from{opacity:0;transform:translateY(8px)}}
+.k{font-size:11px;color:var(--mut);text-transform:uppercase;letter-spacing:.05em;display:flex;justify-content:space-between}
+.v{font-size:24px;font-weight:800;margin-top:2px}.s{font-size:12px;color:var(--mut)}
+h2{font-size:14px;margin:0 0 10px;display:flex;justify-content:space-between;align-items:center}
+.bar{height:7px;background:var(--bd);border-radius:6px;overflow:hidden;margin:4px 0 9px}.bar i{display:block;height:100%;border-radius:6px;transition:width .8s}
+.row{display:flex;justify-content:space-between;gap:8px;align-items:center;font-size:13px}
+.tag{font-size:10px;font-weight:700;padding:2px 8px;border-radius:10px;color:#fff;text-transform:uppercase}
+.high{background:var(--bad)}.med{background:var(--warn);color:#1a1200}.low{background:var(--ok);color:#00200f}
+.t{border:1px solid var(--bd);border-left:4px solid var(--acc);border-radius:12px;padding:10px;margin-bottom:8px}
+.t.high{border-left-color:var(--bad);background:none}.t.med{border-left-color:var(--warn);background:none}.t.low{border-left-color:var(--ok);background:none}
+.ai{font-size:12px;background:rgba(120,150,255,.12);border-radius:8px;padding:8px;margin:7px 0;color:var(--tx)}
+.btn{border:0;background:linear-gradient(135deg,var(--acc),#6a5cff);color:#fff;padding:8px 14px;border-radius:10px;font-size:13px;font-weight:600}
+.chips{display:flex;gap:6px;flex-wrap:wrap;margin-bottom:8px}
+.chips button{border:1px solid var(--bd);background:var(--card);color:var(--tx);border-radius:16px;padding:7px 11px;font-size:12px}
+.ans{font-size:13px;min-height:54px;background:rgba(120,150,255,.1);border-radius:10px;padding:10px}
+.leg{display:flex;flex-direction:column;gap:5px;font-size:12px;flex:1}.leg b{margin-left:auto}.leg span{display:flex;gap:6px;align-items:center;width:100%}
+.sw{width:9px;height:9px;border-radius:3px}
+.flex{display:flex;gap:12px;align-items:center}
+.fl{stroke-dasharray:4 4;animation:fl 1s linear infinite}@keyframes fl{to{stroke-dashoffset:-8}}
+.al{animation:pu2 1.2s infinite}@keyframes pu2{50%{opacity:.35}}
+#toast{position:fixed;left:50%;bottom:calc(16px + env(safe-area-inset-bottom,0px));transform:translate(-50%,40px);opacity:0;background:var(--ok);color:#00200f;font-weight:700;padding:10px 16px;border-radius:12px;transition:.3s;z-index:5}
+#toast.on{transform:translate(-50%,0);opacity:1}
+</style></head><body><div class="w">
+<div class="hero"><div class="brand"><div class="logo">⚡</div><div><h1>Tata Power Command Center</h1><div class="sub">AI-powered live operations · generation, grid, EV &amp; rooftop</div></div></div><div class="pill"><span class="dot"></span>LIVE · <span id="clk"></span></div></div>
+<p class="note">Concept prototype. All numbers are simulated demo data, not real Tata Power data.</p>
+<nav id="nav"></nav><div id="kpi" class="g"></div><div id="view"></div></div><div id="toast"></div>
+<script>
+const $=s=>document.querySelector(s);
+const S={tab:'Overview',load:4820,saved:0,loss:21.0,h:[4700,4740,4790,4760,4810,4850,4830,4800,4820,4840,4870,4820],
+mix:{Coal:44,Hydro:9,Solar:22,Wind:12,Storage:5,Gas:8},
+tickets:[
+{id:'T-1041',t:'Meter tamper suspected, feeder F-22',a:'Odisha · Cuttack',s:'high',f:'Dispatch inspection crew. 38 meters show an abnormal night-load drop.'},
+{id:'T-1044',t:'Solar park output 14% below forecast',a:'Solar · Rajasthan',s:'high',f:'Soiling pattern detected on block C. Schedule a cleaning crew today.'},
+{id:'T-1046',t:'Transformer temperature rising, TX-310',a:'Delhi · North',s:'high',f:'Shift 18% load to TX-311 and issue a maintenance order before failure.'},
+{id:'T-1042',t:'Charger offline for 3 hrs, highway hub',a:'EV · NH-48',s:'med',f:'Try a remote reboot first. If it fails, auto-book a field engineer for 9 AM.'},
+{id:'T-1043',t:'Rooftop net-metering stuck for 12 days',a:'Rooftop · Pune',s:'med',f:'A DISCOM form is missing. Auto-email the customer and installer a checklist.'},
+{id:'T-1045',t:'Billing dispute, 3 duplicate charges',a:'Mumbai · Suburban',s:'low',f:'Duplicate confirmed. Draft a refund and apology reply for approval.'}],
+done:0,
+areas:[['Odisha · Berhampur',26],['Odisha · Cuttack',24],['Odisha · Bhubaneswar',17],['Ajmer',12],['Delhi · North',7],['Mumbai · Suburban',5]],
+plants:[['Coal · Mundra',3600,4000],['Hydro · Lonavala cluster',380,447],['Solar parks',1450,2300],['Wind · Maharashtra',520,900],['Battery storage',160,300]],
+ev:{on:6612,tot:6700},pipe:[['Applied',1240],['Site survey',860],['Installation',540],['Net-metered',420]],
+partners:[['SunBright Installers',94],['GreenRoof Co.',88],['VoltEdge',76],['HelioFit',69]],
+chat:{'Why is loss high in Odisha?':'Loss is concentrated in 3 circles. Night-load drops on 38 meters suggest tampering, and collections lag on rural feeders. Suggested action: audit feeder F-22 first.','Best EV charger sites?':'NH-48 and the Pune–Nashik corridor show queue times above 9 minutes at peak. Six fast chargers there would lift utilisation the most.','How do we cut office workload?':'About 62% of tickets are repeat types: billing, net-metering and status checks. An AI agent can draft replies and route the rest, saving around 1.5 hours per ticket.'}};
+const mc={Coal:'#7f8ea8',Hydro:'#38a3ff',Solar:'#f5b942',Wind:'#2fd186',Storage:'#a07bff',Gas:'#ff8a65'};
+const col=p=>p>20?'var(--bad)':p>12?'var(--warn)':'var(--ok)';
+const bar=(p,c)=>`<div class="bar"><i style="width:${Math.min(100,p)}%;background:${c}"></i></div>`;
+function spark(){const m=Math.min(...S.h),x=Math.max(...S.h),p=S.h.map((v,i)=>`${i*10},${28-(v-m)/(x-m||1)*24}`).join(' ');return `<svg viewBox="0 0 110 30" width="100%" height="28"><polyline fill="none" stroke="var(--acc)" stroke-width="2" points="${p}"/></svg>`}
+function donut(){let o=0,s='';const C=251.3,t=Object.values(S.mix).reduce((a,b)=>a+b,0);for(const[k,v]of Object.entries(S.mix)){const l=v/t*C;s+=`<circle r="40" cx="50" cy="50" fill="none" stroke="${mc[k]}" stroke-width="13" stroke-dasharray="${l-1.5} ${C-l+1.5}" stroke-dashoffset="${-o}" transform="rotate(-90 50 50)"/>`;o+=l}
+return `<svg viewBox="0 0 100 100" width="130">${s}<text x="50" y="49" text-anchor="middle" fill="var(--tx)" font-size="15" font-weight="800">${Math.round(100-S.mix.Coal-S.mix.Gas)}%</text><text x="50" y="61" text-anchor="middle" fill="var(--mut)" font-size="7">clean energy</text></svg>`}
+function ring(){const C=251.3,p=Math.min(1,S.loss/30)*C;return `<svg viewBox="0 0 100 100" width="130"><circle r="40" cx="50" cy="50" fill="none" stroke="var(--bd)" stroke-width="11"/><circle r="40" cx="50" cy="50" fill="none" stroke="${col(S.loss)}" stroke-width="11" stroke-linecap="round" stroke-dasharray="${p} ${C}" transform="rotate(-90 50 50)"/><text x="50" y="52" text-anchor="middle" fill="var(--tx)" font-size="17" font-weight="800">${S.loss.toFixed(1)}%</text><text x="50" y="64" text-anchor="middle" fill="var(--mut)" font-size="7">AT&amp;C loss</text></svg>`}
+function map(){const N=[['Solar',70,50,'#f5b942'],['Coal',35,115,'#7f8ea8'],['Wind',90,172,'#2fd186'],['Hydro',140,150,'#38a3ff'],['Delhi',165,52,0],['Mumbai',120,118,0],['Odisha',262,120,0],['EV hubs',205,172,'#a07bff']],E=[[0,4],[1,5],[2,5],[3,5],[4,5],[5,6],[6,7],[5,7]];
+const al=n=>S.tickets.some(t=>t.s=='high'&&t.a.startsWith(n[0]));
+return `<svg viewBox="0 0 320 200" width="100%">${E.map(e=>`<line class="fl" x1="${N[e[0]][1]}" y1="${N[e[0]][2]}" x2="${N[e[1]][1]}" y2="${N[e[1]][2]}" stroke="var(--acc)" stroke-opacity=".6" stroke-width="1.5"/>`).join('')}${N.map(n=>{const h=!n[3],a=al(n);return `<circle cx="${n[1]}" cy="${n[2]}" r="${h?9:6}" fill="${a?'var(--bad)':h?'var(--acc)':n[3]}" class="${a?'al':''}" stroke="var(--bg)" stroke-width="2"/><text x="${n[1]}" y="${n[2]+(h?21:17)}" text-anchor="middle" font-size="8.5" fill="var(--mut)">${n[0]}</text>`}).join('')}</svg>`}
+function kpi(){const o=S.tickets.length,r=(S.ev.on/S.ev.tot*100).toFixed(1);$('#kpi').innerHTML=[['⚡ Grid load',S.load.toLocaleString()+' MW',spark()],['📉 AT&amp;C loss',S.loss.toFixed(1)+'%','<span class="s">Odisha discoms</span>'],['🎫 Open tickets',o,`<span class="s">${S.done} resolved by AI</span>`],['🔌 EV uptime',r+'%',`<span class="s">${S.ev.on.toLocaleString()} chargers live</span>`],['⏱ Hours saved',S.saved.toFixed(1)+' h','<span class="s">this session</span>']].map(x=>`<div class="c"><div class="k">${x[0]}</div><div class="v">${x[1]}</div>${x[2]}</div>`).join('')}
+const tk=t=>`<div class="t ${t.s}"><div class="row"><b>${t.t}</b><span class="tag ${t.s}">${t.s}</span></div><div class="s">${t.id} · ${t.a}</div><div class="ai">🤖 <b>AI plan:</b> ${t.f}</div><button class="btn" onclick="res('${t.id}')">Approve &amp; resolve</button></div>`;
+const V={
+Overview:()=>`<div class="two"><div class="c"><h2>Live network <span class="s">red = needs attention</span></h2>${map()}</div><div class="c"><h2>Generation mix</h2><div class="flex">${donut()}<div class="leg">${Object.entries(S.mix).map(([k,v])=>`<span><i class="sw" style="background:${mc[k]}"></i>${k}<b>${v}%</b></span>`).join('')}</div></div></div></div><div class="c" style="margin-top:12px"><h2>Priority alerts</h2>${S.tickets.filter(t=>t.s=='high').map(tk).join('')||'<div class="s">No high-priority alerts. All clear. 🎉</div>'}</div>`,
+Grid:()=>`<div class="two"><div class="c"><h2>Network loss</h2><div class="flex">${ring()}<div class="s">Target: below 12%.<br><br>Each AI audit finds theft hotspots and weak collection zones, cutting simulated loss by about 0.4 points.</div></div><br><button class="btn" onclick="audit()">🔍 Dispatch AI audit to top hotspot</button></div><div class="c"><h2>Loss by area</h2>${S.areas.map(a=>`<div class="row"><span>${a[0]}</span><b style="color:${col(a[1])}">${a[1]}%</b></div>${bar(a[1]*3,col(a[1]))}`).join('')}</div></div>`,
+Generation:()=>`<div class="two"><div class="c"><h2>Plants &amp; output</h2>${S.plants.map(p=>{const q=Math.round(p[1]/p[2]*100);return `<div class="row"><span>${p[0]}</span><b>${Math.round(p[1])} / ${p[2]} MW</b></div>${bar(q,q<60?'var(--warn)':'var(--ok)')}`}).join('')}</div><div class="c"><h2>6-hour forecast</h2><svg viewBox="0 0 300 80" width="100%"><polyline fill="none" stroke="var(--acc)" stroke-width="2.5" points="0,52 50,44 100,32 150,24 200,34 250,46 300,40"/><polyline fill="none" stroke="var(--gold)" stroke-width="2" stroke-dasharray="4" points="0,64 50,58 100,40 150,20 200,28 250,56 300,60"/></svg><div class="s"><b style="color:var(--acc)">Blue</b> demand · <b style="color:var(--gold)">Gold</b> solar + wind supply.<br>AI suggestion: discharge battery storage at hour 5 to cover the evening gap.</div></div></div>`,
+EV:()=>`<div class="two"><div class="c"><h2>EV charging network</h2><div class="row"><span>Online now</span><b>${S.ev.on.toLocaleString()} / ${S.ev.tot.toLocaleString()}</b></div>${bar(S.ev.on/S.ev.tot*100,'var(--ok)')}<div class="s">Predictive maintenance flags faulty chargers before customers notice.</div></div><div class="c"><h2>Rooftop solar pipeline today</h2>${S.pipe.map(p=>`<div class="row"><span>${p[0]}</span><b>${p[1]}</b></div>${bar(p[1]/12.4,'var(--acc)')}`).join('')}</div></div><div class="c" style="margin-top:12px"><h2>Installer partner scorecard</h2>${S.partners.map(p=>`<div class="row"><span>${p[0]}</span><b style="color:${p[1]>85?'var(--ok)':p[1]>75?'var(--warn)':'var(--bad)'}">${p[1]}/100</b></div>${bar(p[1],'var(--acc)')}`).join('')}</div>`,
+Desk:()=>`<div class="c"><h2>🤖 Ask the center</h2><div class="chips">${Object.keys(S.chat).map(q=>`<button onclick="ask(this.textContent)">${q}</button>`).join('')}</div><div class="ans" id="ans">Tap a question to see an AI insight.</div></div><div class="c"><h2>AI ticket desk <span class="s">${S.tickets.length} open</span></h2>${S.tickets.map(tk).join('')||'<div class="s">Queue clear. Every ticket resolved with an AI plan. ✅</div>'}</div>`};
+Object.assign(S,{q:4000,vpp:100,chatH:''});
+const inr=n=>'₹'+Math.round(n).toLocaleString('en-IN');
+const bub=(m,u)=>`<div style="display:flex;justify-content:${u?'flex-end':'flex-start'};margin:5px 0"><div style="max-width:85%;padding:8px 11px;border-radius:12px;font-size:13px;background:${u?'var(--acc)':'rgba(120,150,255,.14)'};color:${u?'#fff':'var(--tx)'}">${m}</div></div>`;
+const bots={'My bill looks high':'Your usage rose 22% last week, mostly 7–10 PM (AC load). Moving geyser and washing-machine use to daytime could save about ₹380 a month. Want a tips plan?','Rooftop solar status':'Application TP-88412: site survey done ✅ Installation scheduled Tuesday 10 AM. Net-metering form is pre-filled for you.','Book an EV charging slot':'3 fast chargers are free near you. Cheapest window is 12–3 PM at ₹9/kWh (illustrative). Booked 12:30 PM, reminder set ✅'};
+function bot(q){S.chatH+=bub(q,1)+bub(bots[q]);$('#cb').innerHTML=S.chatH}
+const qh=v=>{const k=Math.round(v/100*1.1)/10,c=k*55000,sv=v*.8;return `<div class="row"><span>Suggested system</span><b>${k} kW</b></div><div class="row"><span>Estimated cost</span><b>${inr(c)}</b></div><div class="row"><span>Bill saving</span><b>${inr(sv)}/mo</b></div><div class="row"><span>Payback</span><b>${(c/(sv*12)).toFixed(1)} yrs</b></div>`};
+function quote(v){S.q=+v;$('#qo').innerHTML=qh(+v);$('#ql').textContent=inr(+v)}
+const vh=v=>`<div class="v">${Math.round(v*.6)} MW</div><div class="s">${(v*1000).toLocaleString('en-IN')} homes with rooftop, battery or EV enrolled. Acts like a virtual peaker plant, without burning fuel.</div>`;
+function vpp(v){S.vpp=+v;$('#vo').innerHTML=vh(+v)}
+const tws=[['Add 6 fast chargers on NH-48','Peak queue time 9 min → about 2 min, plus extra charging revenue. (Illustrative)'],['Shift 18% load from TX-310 to TX-311','Overload risk drops sharply; an outage for roughly 4,000 homes is avoided. (Illustrative)'],['Add 50 MW storage near Mumbai','Evening peak purchases fall, solar curtailment falls. (Illustrative)']];
+function twin(i){$('#tw').innerHTML='<b>Projected result:</b> '+tws[i][1]}
+function buy(n){toast('✓ Purchased from '+n+' · settled on bill')}
+const PR=[7,7,6.5,6.5,6.5,7,8,10,11,10,8,6,5,4.5,4.5,5,6.5,9,12,13,12.5,11,9,8];
+const pchart=()=>`<svg viewBox="0 0 300 80" width="100%">${PR.map((p,i)=>`<rect x="${i*12.5}" y="${70-p*4.5}" width="10" height="${p*4.5}" rx="2" fill="${p<6?'var(--ok)':p>10.5?'var(--bad)':'var(--mut)'}"/>`).join('')}<text x="0" y="79" font-size="7" fill="var(--mut)">12 AM</text><text x="140" y="79" font-size="7" fill="var(--mut)">12 PM</text><text x="270" y="79" font-size="7" fill="var(--mut)">11 PM</text></svg>`;
+const hc=h=>h<50?'var(--bad)':h<75?'var(--warn)':'var(--ok)';
+Object.assign(V,{
+Cust:()=>`<div class="two"><div class="c"><h2>💬 WhatsApp bot (Hindi + English)</h2><div class="chips">${Object.keys(bots).map(q=>`<button onclick="bot(this.textContent)">${q}</button>`).join('')}</div><div id="cb">${S.chatH||'<div class="s">Tap a message to chat as a customer.</div>'}</div></div><div class="c"><h2>☀️ Rooftop sales AI <span class="s">quote in seconds</span></h2><div class="row"><span>Monthly bill</span><b id="ql">${inr(S.q)}</b></div><input type="range" min="1000" max="10000" step="500" value="${S.q}" style="width:100%" oninput="quote(this.value)"><div id="qo">${qh(S.q)}</div><div class="s">Illustrative estimate. Real flow adds satellite roof analysis and subsidy check.</div></div></div>`,
+Ops:()=>`<div class="two"><div class="c"><h2>🛠 Predictive maintenance</h2>${[['Transformer TX-310',38,'May fail in ~9 days'],['Inverter INV-7, Rajasthan',57,'Efficiency dropping'],['Charger CH-2291',71,'Connector wear'],['Wind turbine WT-18',88,'Healthy']].map(a=>`<div class="row"><span>${a[0]}</span><b style="color:${hc(a[1])}">${a[1]}%</b></div>${bar(a[1],hc(a[1]))}<div class="s" style="margin:-6px 0 8px">${a[2]}</div>`).join('')}</div><div class="c"><h2>🚁 Drone &amp; vision AI</h2>${[['220 kV line, span 14','Hot insulator found','Crew booked','high'],['Solar block C','12 cracked panels','Replacement ordered','med'],['Turbine WT-09','Blade erosion','Scheduled next week','low']].map(d=>`<div class="t ${d[3]}"><b>${d[0]}</b><div class="s">${d[1]} · ${d[2]}</div></div>`).join('')}</div></div><div class="c" style="margin-top:12px"><h2>🧪 Digital twin: test before you build</h2><div class="chips">${tws.map((t,i)=>`<button onclick="twin(${i})">${t[0]}</button>`).join('')}</div><div class="ans" id="tw">Pick a scenario to simulate it on the network model.</div></div>`,
+Energy:()=>`<div class="two"><div class="c"><h2>🔋 Virtual Power Plant</h2><div class="row"><span>Enrolled homes (thousands)</span></div><input type="range" min="10" max="200" step="10" value="${S.vpp}" style="width:100%" oninput="vpp(this.value)"><div id="vo">${vh(S.vpp)}</div></div><div class="c"><h2>🌱 Carbon dashboard</h2><div class="v">${Math.round(S.load*(100-S.mix.Coal-S.mix.Gas)/100*24*.82/1000)} t CO₂</div><div class="s">avoided today by clean generation. Per-customer and per-industry carbon reports, plus credit tracking. (Illustrative factor)</div></div></div><div class="c" style="margin-top:12px"><h2>⚡ Smart EV charging &amp; storage optimizer</h2>${pchart()}<div class="s"><b style="color:var(--ok)">Green</b>: charge EVs and batteries · <b style="color:var(--bad)">Red</b>: discharge storage, delay charging · Illustrative price curve</div></div><div class="c"><h2>🏘 Peer-to-peer energy marketplace</h2>${[['Anita · Thane','12 kWh','₹6.2'],['Raj · Pune','8 kWh','₹5.9'],['Society · Mira Road','30 kWh','₹5.5']].map(o=>`<div class="row" style="margin-bottom:8px"><span>${o[0]}<br><span class="s">${o[1]} surplus solar · ${o[2]}/kWh</span></span><button class="btn" onclick="buy('${o[0]}')">Buy</button></div>`).join('')}</div>`,
+Pitch:()=>`<div class="c"><h2>🗺 Roadmap</h2>${[['Now','Live command center, AI ticket desk, loss and EV monitoring (this demo)','var(--ok)'],['Phase 2 · 6 months','Smart-meter AI, customer app + WhatsApp bot, predictive maintenance, rooftop sales AI','var(--acc)'],['Phase 3 · 12–18 months','Virtual power plant, smart EV charging, storage optimizer, forecasting, drone inspection','#a07bff'],['Phase 4 · Vision','Carbon dashboard, full digital twin, peer-to-peer energy marketplace','var(--gold)']].map(p=>`<div class="t" style="border-left-color:${p[2]}"><b>${p[0]}</b><div class="s">${p[1]}</div></div>`).join('')}</div><div class="c"><h2>🎯 The ask: a 90-day pilot</h2><div class="s" style="margin-bottom:8px">One DISCOM circle (for example in Odisha): loss detection + AI ticket automation.</div>${[['AT&amp;C loss','−2 points (target)'],['Ticket handling time','−40% (target)'],['Charger downtime','−30% (target)'],['Office hours saved','1.5 h per resolved ticket']].map(m=>`<div class="row" style="margin-bottom:6px"><span>${m[0]}</span><b>${m[1]}</b></div>`).join('')}<div class="s">Targets are proposed goals to be agreed with Tata Power, not guarantees.</div></div>`});
+const tabs=[['Overview','Overview'],['Grid','Grid &amp; Loss'],['Generation','Generation'],['EV','EV &amp; Rooftop'],['Desk','AI Desk'],['Cust','Customer App'],['Ops','Smart Ops'],['Energy','VPP &amp; Market'],['Pitch','Roadmap &amp; Pitch']];
+function draw(){$('#nav').innerHTML=tabs.map(t=>`<button class="${t[0]==S.tab?'on':''}" onclick="go('${t[0]}')">${t[1]}</button>`).join('');kpi();$('#view').innerHTML=V[S.tab]()}
+function go(t){S.tab=t;draw()}
+function toast(m){const e=$('#toast');e.textContent=m;e.className='on';setTimeout(()=>e.className='',1800)}
+function res(id){const i=S.tickets.findIndex(t=>t.id==id);if(i<0)return;S.tickets.splice(i,1);S.done++;S.saved+=1.5;toast('✓ Resolved · 1.5 h saved');draw()}
+function audit(){S.loss=Math.max(8,S.loss-.4);S.areas[0][1]=Math.max(8,S.areas[0][1]-1);S.areas.sort((x,y)=>y[1]-x[1]);S.saved+=2;toast('✓ Audit dispatched · loss reduced');draw()}
+let ty;function ask(q){clearInterval(ty);const a=$('#ans'),m=S.chat[q];let i=0;a.textContent='';ty=setInterval(()=>{a.textContent=m.slice(0,++i);if(i>=m.length)clearInterval(ty)},14)}
+const j=(n,m)=>n+(Math.random()-.5)*m;
+setInterval(()=>{S.load=Math.round(j(S.load,70));S.h.push(S.load);S.h.shift();S.plants.forEach(p=>p[1]=Math.max(50,Math.min(p[2],j(p[1],p[2]*.03))));S.ev.on=Math.max(6500,Math.min(6700,Math.round(j(S.ev.on,10))));
+const k=Object.keys(S.mix),a=k[Math.floor(Math.random()*6)],b=k[Math.floor(Math.random()*6)];if(a!=b&&S.mix[a]>3){S.mix[a]--;S.mix[b]++}
+$('#clk').textContent=new Date().toLocaleTimeString();if(['Overview','Grid','Generation','EV'].includes(S.tab))draw();else kpi()},2500);
+$('#clk').textContent=new Date().toLocaleTimeString();draw();
+</script></body></html>
